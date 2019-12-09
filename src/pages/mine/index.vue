@@ -3,23 +3,16 @@
 		<view>
             <text class="title">{{title}}</text>
         </view>
-		<view>
-			<tab-bar/>
-		</view>
 	</view>
 </template>
 
 <script lang="ts">
-	import Vue from 'vue';
-	import TabBar from '../../components/tabbar/TabBar.vue'
+    import Vue from 'vue';
 	export default Vue.extend({
 		data() {
 			return {
-				title: '首页'
+				title: '我的'
 			}
-		},
-		components: {
-			TabBar
 		},
 		onLoad() {
 
