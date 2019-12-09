@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "pages/category/index"
+		},
+		{
+			"path": "pages/shopcart/index"
+		},
+		{
+			"path": "pages/mine/index"
 		}
 	],
 	"tabBar": {
@@ -17,26 +23,27 @@
         "iconWidth": "24px",
         "spacing": "3px",
         "list": [{
-            "pagePath": "pages/component/index",
+            "pagePath": "pages/index/index",
             "iconPath": "static/unactive/1.png",
             "selectedIconPath": "static/actived/1.png",
             "text": "首页"
         }, {
-            "pagePath": "pages/component/category",
+            "pagePath": "pages/category/index",
             "iconPath": "static/unactive/fenlei.png",
             "selectedIconPath": "static/actived/fenlei.png",
             "text": "分类"
         }, {
-            "pagePath": "pages/component/shopcart",
+            "pagePath": "pages/shopcart/index",
             "iconPath": "static/unactive/qicheqianlian.png",
             "selectedIconPath": "static/actived/qicheqianlian.png",
             "text": "购物车"
         }, {
-            "pagePath": "pages/component/mine",
+            "pagePath": "pages/mine/indexs",
             "iconPath": "static/unactive/wode.png",
             "selectedIconPath": "static/actived/wode.png",
             "text": "我的"
-		}]
+		}],
+		"position": "bottom"
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
