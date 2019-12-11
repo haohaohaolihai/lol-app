@@ -11,7 +11,7 @@
 	export default Vue.extend({
 		data() {
 			return {
-				title: '购物车'
+				title: '分类'
 			}
 		},
 		onLoad() {
