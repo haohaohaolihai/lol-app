@@ -4,7 +4,7 @@
     <view class="text-container">
       <text class="title">2019全球总决赛冠军纪念套装</text>
         <text class="tag">￥</text>
-        <text class="price">888.00</text>
+        <text class="price">{{price}}</text>
       <!-- <text class="pre-price">￥1006.00</text> -->
     </view>
   </view>

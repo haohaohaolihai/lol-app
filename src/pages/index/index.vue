@@ -5,7 +5,7 @@
     </view>
     <view v-else>
       <!-- 轮播图 -->
-      <banner :mode="mode" :indicatorDots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" />
+      <banner :height="bannerHeight"/>
       <!-- 导航栏 -->
       <view class="nav-list">
         <view v-for="(item, index) in navList" :key="index" class="nav-items">
@@ -17,8 +17,8 @@
         <view v-for="(items, index) in dataList" :key="index">
           <view class="list-title">{{items.name}}</view>
           <view class="shop-item-list">
-            <view v-for="(item, i) in items.list" :key="item.iMallId">
-              <shop-item :src="item.sProfileImg" :rightBorder="i%2?true:false" />
+            <view v-for="(item, i) in items.list" :key="item.iMallId" @click="toDetail(item.iMallId)">
+              <shop-item :src="item.sProfileImg" :rightBorder="i%2?true:false" :price="decimalProcess(item.iPriceReal)"/>
             </view>
           </view>
         </view>
@@ -29,11 +29,9 @@
 
 <script lang="ts">
   import Vue from "vue";
-  // import {
-  //   getIndexGoods
-  // } from "../../api/index";
   import {
-    getIndexGoods
+    getIndexGoods,
+    baseUrl
   } from '../../api/weixinQueryParams'
   import Banner from '../../components/Banner/index.vue'
   import Item from './NavItem/index.vue'
@@ -46,11 +44,7 @@
         return list;
       }
       return {
-        mode: 'scaleToFill',
-        indicatorDots: true,
-        autoplay: true,
-        interval: 2000,
-        duration: 500,
+        bannerHeight: "368rpx",
         dataList: [{
             name: '- 精品推荐 -',
             list: shopList()
@@ -105,7 +99,7 @@
       //微信小程序做了一个映射，所以不存在跨域，可以直接使用绝对地址
       //发起数据请求
       uni.request({
-        url: `https://capps.game.qq.com/daoju/v3/zb/client/goods/GoodsApp.php`,
+        url: baseUrl,
         data: {
           // 把查询参数解构一下
           ...getIndexGoods()
@@ -153,12 +147,22 @@
           }
           i++;
         } while (i < data.length);
+        console.log(this.dataList);
+      },
+      toDetail(data: String) {
+        uni.navigateTo({
+          url: `/pages/detail/index?id=${data}`
+        })
+      },
+      decimalProcess(str: string): string{
+        //添加小数点
+        return str.substring(0, str.length - 2) + '.' + str.substring(str.length - 2)
       }
     }
   });
 </script>
 
-<style scoped>
+<style>
   .content {
     text-align: center;
   }
